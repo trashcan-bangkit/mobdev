@@ -3,48 +3,44 @@ package com.capstone.trashcan.view
 import android.content.Context
 import android.graphics.Canvas
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import java.util.regex.Pattern
 
-class EmailEditText @JvmOverloads constructor(
+
+class NameEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatEditText(context, attrs) {
-
-    companion object {
-        private val EMAIL_PATTERN: Pattern = Pattern.compile(
-            "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-        )
-    }
-
-    var isValid: Boolean = false
-        private set
-
     init {
+        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+        // Add text change listener to validate password length
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // Do nothing.
             }
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                isValid = EMAIL_PATTERN.matcher(s).matches()
-                if (!isValid) {
-                    setError("Format email salah", null)
+                if (s.length == 0) {
+                    setError("Nama tidak boleh kosong", null)
                 } else {
                     error = null
                 }
             }
 
             override fun afterTextChanged(s: Editable) {
+                // Do nothing.
             }
         })
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Masukkan email Anda"
+        // Menambahkan hint pada editText
+        hint = "Masukkan nama Anda"
 
+        // Menambahkan text aligmnet pada editText
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

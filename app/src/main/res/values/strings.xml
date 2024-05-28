@@ -5,4 +5,12 @@
     <string name="login">Login</string>
     <string name="signup">Signup</string>
     <string name="dengan_trashcan">dengan Trashcan</string>
+    <string name="register">Register</string>
+    <string name="create_account">Create your new account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_to_you_account">Login to you account</string>
+    <string name="name">Name</string>
+    <string name="logout">Logout</string>
 </resources>
