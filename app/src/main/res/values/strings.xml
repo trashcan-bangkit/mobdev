@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Trashcan</string>
+    <string name="welcome">Welcome</string>
+    <string name="wording_welcome">Mulai Perjalanan Anda</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="dengan_trashcan">dengan Trashcan</string>
 </resources>
