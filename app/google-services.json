@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "545902229393",
+    "project_id": "trashcan-1e54a",
+    "storage_bucket": "trashcan-1e54a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545902229393:android:3e120a20e8b4d95b930c30",
+        "android_client_info": {
+          "package_name": "com.capstone.trashcan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545902229393-cl6lq8c05icegiabq4ojc4bi4uojng31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.trashcan",
+            "certificate_hash": "28f3631f8c0776bf19bde0ae5e379386da35cb88"
+          }
+        },
+        {
+          "client_id": "545902229393-2at25l7kvt8a4875doakg33nrfkukpmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqtknQJjpi6yDzsCr4R_lAxhOVjEPcHIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545902229393-2at25l7kvt8a4875doakg33nrfkukpmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
