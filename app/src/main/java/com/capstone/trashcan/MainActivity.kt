@@ -9,8 +9,15 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.CredentialManager
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.capstone.trashcan.databinding.ActivityMainBinding
+import com.capstone.trashcan.view.classify.UploadActivity
 import com.capstone.trashcan.view.welcome.WelcomeActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -32,6 +39,26 @@ class MainActivity : AppCompatActivity() {
             finish()
             return
         }
+
+        val navView: BottomNavigationView = binding.bottomNavigation
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_location, R.id.navigation_history, R.id.navigation_profile
+            )
+        )
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+        binding.fab.setOnClickListener {
+            // Navigate to classify or perform other action
+            startActivity(Intent(this, UploadActivity::class.java))
+
+        }
+
+        supportActionBar?.hide()
 
         setupAction()
     }
