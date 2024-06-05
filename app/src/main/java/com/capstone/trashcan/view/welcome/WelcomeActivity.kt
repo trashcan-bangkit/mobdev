@@ -1,14 +1,20 @@
 package com.capstone.trashcan.view.welcome
 
+import ViewPagerAdapter
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.helper.widget.MotionEffect.TAG
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.credentials.CredentialManager
@@ -17,6 +23,7 @@ import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetCredentialResponse
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager.widget.ViewPager
 import com.capstone.trashcan.MainActivity
 import com.capstone.trashcan.R
 import com.capstone.trashcan.databinding.ActivityWelcomeBinding
@@ -37,6 +44,9 @@ class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var dots: Array<TextView?>
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
@@ -50,7 +60,56 @@ class WelcomeActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
+        setupViewPager()
     }
+
+    private fun setupViewPager() {
+        viewPagerAdapter = ViewPagerAdapter(this)
+        binding.slideViewPager.adapter = viewPagerAdapter
+        setDotIndicator(0)
+
+        binding.slideViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+
+            override fun onPageSelected(position: Int) {
+                setDotIndicator(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {}
+        })
+    }
+
+    private fun setDotIndicator(position: Int) {
+        dots = arrayOfNulls(3)
+        binding.dotIndicator.removeAllViews()
+
+        for (i in dots.indices) {
+            dots[i] = TextView(this).apply {
+                text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Html.fromHtml("&#8226;", Html.FROM_HTML_MODE_LEGACY)
+                } else {
+                    Html.fromHtml("&#8226;")
+                }
+                textSize = 35f
+                setTextColor(ContextCompat.getColor(this@WelcomeActivity, R.color.black))
+            }
+            binding.dotIndicator.addView(dots[i])
+        }
+
+        // Update the color of the dot for the selected position
+        if (dots.isNotEmpty()) {
+            for (i in dots.indices) {
+                if (i == position) {
+                    dots[i]?.setTextColor(ContextCompat.getColor(this, R.color.black))
+                } else {
+                    dots[i]?.setTextColor(ContextCompat.getColor(this, R.color.grey)) // Set the color of inactive dots
+                }
+            }
+        }
+    }
+
+
+
 
     private fun signIn() {
         val credentialManager = CredentialManager.create(this) //import from androidx.CredentialManager

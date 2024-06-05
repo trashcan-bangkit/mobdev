@@ -21,4 +21,22 @@
     <string name="screen2desc">Screen 2 Desc</string>
     <string name="screen3desc">Screen 3 Desc</string>
 
+    <string name="waste_bank">Waste Bank Name</string>
+    <string name="waste_bank_distance">XX m</string>
+    <string name="waste_bank_address">Waste Bank Address</string>
+    <string name="address_icon">Nearest Location</string>
+    <string name="location_icon">Location Now</string>
+    <string name="your_location">Your Location</string>
+    <string name="nearest_waste_bank">Nearest Waste Bank</string>
+    <string name="waste_bank_around">Waste Banks Around You</string>
+
+    <string name="profile_picture">Profile Picture</string>
+    <string name="welcome_back_coma">Welcome back,</string>
+    <string name="home_trash_count">So far you\'ve scanned X trash.</string>
+    <string name="organic">Organic</string>
+    <string name="non_organic">Non-Organic</string>
+    <string name="toxic">Toxic</string>
+    <string name="count">X</string>
+    <string name="your_last_scans">Your Last Scans</string>
+
 </resources>

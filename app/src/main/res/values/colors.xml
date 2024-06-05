@@ -5,4 +5,6 @@
     <color name="blue_primary"> #465DD9 </color>
     <color name="ijo_trash"> #8CCA5B </color>
     <color name="green"> #8CCA5B </color>
+    <color name="grey"> #D4D4D4 </color>
+    <color name="dark_grey"> #A1A7B0 </color>
 </resources>
