@@ -39,4 +39,9 @@
     <string name="count">X</string>
     <string name="your_last_scans">Your Last Scans</string>
 
+    <string name="waste_bank_detail">Waste Bank Detail</string>
+    <string name="from_you">from you</string>
+    <string name="phone_number">XXXX-XXXX-XXXX</string>
+    <string name="waste_bank_image">Waste Bank ImageX</string>
+
 </resources>

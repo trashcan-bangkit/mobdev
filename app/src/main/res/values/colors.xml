@@ -7,4 +7,5 @@
     <color name="green"> #8CCA5B </color>
     <color name="grey"> #D4D4D4 </color>
     <color name="dark_grey"> #A1A7B0 </color>
+    <color name="darker_grey"> #808488 </color>
 </resources>

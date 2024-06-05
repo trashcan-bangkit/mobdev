@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Trashcan"
         tools:targetApi="31">
         <activity
+            android:name=".view.wastebank.WasteBankDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.wastebank.WasteBankActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
             android:exported="true">
