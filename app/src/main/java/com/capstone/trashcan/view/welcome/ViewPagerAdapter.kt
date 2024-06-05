@@ -11,9 +11,9 @@ import com.capstone.trashcan.R
 class ViewPagerAdapter(private val context: Context) : PagerAdapter() {
 
     private val sliderAllImages = intArrayOf(
-        R.drawable.page_1,
-        R.drawable.page_2,
-        R.drawable.page_3
+        R.drawable.onboarding_page_1,
+        R.drawable.onboarding_page_2,
+        R.drawable.onboarding_page_3
     )
 
     private val sliderAllTitle = intArrayOf(

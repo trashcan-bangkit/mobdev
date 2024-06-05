@@ -14,12 +14,12 @@
     <string name="name">Name</string>
     <string name="logout">Logout</string>
 
-    <string name="screen1">Screen 1</string>
-    <string name="screen2">Screen 2</string>
-    <string name="screen3">Screen 3</string>
-    <string name="screen1desc">Screen 1</string>
-    <string name="screen2desc">Screen 2 Desc</string>
-    <string name="screen3desc">Screen 3 Desc</string>
+    <string name="screen1">Scan and Identify Your Trash Type</string>
+    <string name="screen2">Locate Waste Banks Around You</string>
+    <string name="screen3">Clean Environment, Brighter Future</string>
+    <string name="screen1desc">Easily identify your trash and get recycling recommendation with AI.</string>
+    <string name="screen2desc">Quickly find nearby waste banks around you.</string>
+    <string name="screen3desc">Together, Let\'s Make the World a Better Place!</string>
 
     <string name="waste_bank">Waste Bank Name</string>
     <string name="waste_bank_distance">XX m</string>

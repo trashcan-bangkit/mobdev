@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,18 +12,20 @@
         android:id="@+id/sliderImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerCrop" />
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:scaleType="fitCenter"
+        tools:src="@tools:sample/backgrounds/scenic"/>
 
     <TextView
         android:id="@+id/sliderTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:padding="20dp"
         android:text="@string/screen1"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textColor="@color/green"
+        android:textSize="29sp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:text="@string/screen1desc"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp" />
