@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_location" />
 
     <fragment
+        android:id="@+id/navigation_classify"
+        android:name="com.capstone.trashcan.ClassifyFragment"
+        android:label="Classify"
+        tools:layout="@layout/fragment_classify" />
+
+    <fragment
         android:id="@+id/navigation_history"
         android:name="com.capstone.trashcan.HistoryFragment"
         android:label="History"
