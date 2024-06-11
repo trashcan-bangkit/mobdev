@@ -17,6 +17,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.capstone.trashcan.databinding.ActivityMainBinding
 import com.capstone.trashcan.view.classify.UploadActivity
 import com.capstone.trashcan.view.welcome.WelcomeActivity
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -26,6 +27,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,8 +42,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val navView: BottomNavigationView = binding.bottomNavigation
+//        val navView: BottomAppBar = binding.bottomAppBar
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        val navView: BottomNavigationView = binding.bottomNavigationView
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
 
         binding.fab.setOnClickListener {
             // Navigate to classify or perform other action
