@@ -129,6 +129,7 @@ class WelcomeActivity : AppCompatActivity() {
                     request = request,
                     context = this@WelcomeActivity,
                 )
+                Log.d(TAG, "signIn: Credential request successful")
                 handleSignIn(result)
             } catch (e: GetCredentialException) { //import from androidx.CredentialManager
                 Log.d("Error", e.message.toString())
