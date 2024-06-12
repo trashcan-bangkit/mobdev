@@ -17,10 +17,41 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="waste_bank">Waste Bank</string>
+<!--    <string name="waste_bank">Waste Bank</string>-->
     <string name="classify">Classify</string>
     <string name="history">History</string>
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="screen1">Scan and Identify Your Trash Type</string>
+    <string name="screen2">Locate Waste Banks Around You</string>
+    <string name="screen3">Clean Environment, Brighter Future</string>
+    <string name="screen1desc">Easily identify your trash and get recycling recommendation with AI.</string>
+    <string name="screen2desc">Quickly find nearby waste banks around you.</string>
+    <string name="screen3desc">Together, Let\'s Make the World a Better Place!</string>
+
+    <string name="waste_bank">Waste Bank Name</string>
+    <string name="waste_bank_distance">XX m</string>
+    <string name="waste_bank_address">Waste Bank Address</string>
+    <string name="address_icon">Nearest Location</string>
+    <string name="location_icon">Location Now</string>
+    <string name="your_location">Your Location</string>
+    <string name="nearest_waste_bank">Nearest Waste Bank</string>
+    <string name="waste_bank_around">Waste Banks Around You</string>
+
+    <string name="profile_picture">Profile Picture</string>
+    <string name="welcome_back_coma">Welcome back,</string>
+    <string name="home_trash_count">So far you\'ve scanned X trash.</string>
+    <string name="organic">Organic</string>
+    <string name="non_organic">Non-Organic</string>
+    <string name="toxic">Toxic</string>
+    <string name="count">X</string>
+    <string name="your_last_scans">Your Last Scans</string>
+
+    <string name="waste_bank_detail">Waste Bank Detail</string>
+    <string name="from_you">from you</string>
+    <string name="phone_number">XXXX-XXXX-XXXX</string>
+    <string name="waste_bank_image">Waste Bank ImageX</string>
+
 </resources>

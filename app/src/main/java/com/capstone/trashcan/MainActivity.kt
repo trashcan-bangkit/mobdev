@@ -64,25 +64,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.logoutButton.setOnClickListener {
+//        binding.logoutButton.setOnClickListener {
 //            startActivity(Intent(this, WelcomeActivity::class.java))
-            signOut()
-        }
+//            signOut()
+//        }
 
 //        binding.signupButton.setOnClickListener {
 //            startActivity(Intent(this, SignupActivity::class.java))
 //        }
     }
 
-    private fun signOut() {
-
-        lifecycleScope.launch {
-            val credentialManager = CredentialManager.create(this@MainActivity)
-            auth.signOut()
-            credentialManager.clearCredentialState(ClearCredentialStateRequest())
-            startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
-            finish()
-        }
-
-    }
+//    private fun signOut() {
+//
+//        lifecycleScope.launch {
+//            val credentialManager = CredentialManager.create(this@MainActivity)
+//            auth.signOut()
+//            credentialManager.clearCredentialState(ClearCredentialStateRequest())
+//            startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
+//            finish()
+//        }
+//
+//    }
 }

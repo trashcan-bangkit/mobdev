@@ -28,6 +28,12 @@
             android:exported="false"
             android:label="@string/title_activity_nav" />
         <activity
+            android:name=".view.wastebank.WasteBankDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.wastebank.WasteBankActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.signup.SignupActivity"
             android:exported="false" />
         <activity
