@@ -12,15 +12,25 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.trashcan.R
 import com.capstone.trashcan.databinding.ActivityUploadBinding
+import com.capstone.trashcan.view.uriToFile
 import com.yalantis.ucrop.UCrop
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class UploadActivity : AppCompatActivity() {
+    private lateinit var classificationViewModel: ClassificationViewModel
+
     private lateinit var binding: ActivityUploadBinding
 
     private var currentImageUri: Uri? = null
@@ -32,6 +42,16 @@ class UploadActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.galleryButton.setOnClickListener { startGallery() }
+
+        classificationViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ClassificationViewModel::class.java)
+
+        binding.classifyButton.setOnClickListener {
+            currentImageUri?.let {
+                uploadImageActivity()
+            } ?: run {
+                showToast("Insert image first.")
+            }
+        }
 
         setupView()
         setupAction()
@@ -105,6 +125,53 @@ class UploadActivity : AppCompatActivity() {
             .start(this)
     }
 
+    private fun uploadImageActivity() {
+        currentImageUri?.let { uri ->
+            val imageFile = uriToFile(uri, this)
+            Log.d("Image File", "showImage: ${imageFile.path}")
+
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+            val multipartBody = MultipartBody.Part.createFormData(
+                "file",
+                imageFile.name,
+                requestImageFile
+            )
+
+            classificationViewModel.uploadImage(multipartBody) { response, errorMessage ->
+                response?.let {
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Success")
+                        setMessage("Story uploaded successfully.")
+                        setPositiveButton("OK") { _, _ ->
+                            val intent = Intent(this@UploadActivity, ResultActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            intent.putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
+                            intent.putExtra(ResultActivity.EXTRA_MAIN_CATEGORY, response.mainCategory)
+                            intent.putExtra(ResultActivity.EXTRA_SUB_CATEGORY, response.subCategory)
+                            startActivity(intent)
+                        }
+                        create()
+                        show()
+                    }
+
+                } ?: run {
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Upload Failed")
+                        setMessage(
+                            errorMessage
+                                ?: "There was an error while uploading your image. Please try again."
+                        )
+                        setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                        show()
+                    }
+                }
+            }
+
+        } ?: showToast("Image is still empty")
+    }
 
     private fun showImage() {
         currentImageUri?.let {
