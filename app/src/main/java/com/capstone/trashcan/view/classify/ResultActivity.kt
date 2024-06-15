@@ -36,11 +36,20 @@ class ResultActivity : AppCompatActivity() {
         val subCategory = intent.getStringExtra(EXTRA_SUB_CATEGORY)
         binding.tvSecond.text = subCategory
 
+        val description = intent.getStringExtra(EXTRA_DESCRIPTION)
+        binding.tvDescription.text = description
+
+        val recommendations = intent.getStringArrayListExtra(EXTRA_RECOMMENDATIONS)
+        val recommendationsText = recommendations?.joinToString(separator = "\n") { " $it" } ?: "No recommendations available"
+        binding.tvRecommendation.text = recommendationsText
+
     }
 
     companion object {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
         const val EXTRA_MAIN_CATEGORY = "extra_main_category"
         const val EXTRA_SUB_CATEGORY = "extra_sub_category"
+        const val EXTRA_DESCRIPTION = "extra_description"
+        const val EXTRA_RECOMMENDATIONS = "extra_recommendations"
     }
 }

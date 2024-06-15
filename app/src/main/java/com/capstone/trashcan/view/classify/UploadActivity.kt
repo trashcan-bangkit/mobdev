@@ -117,10 +117,10 @@ class UploadActivity : AppCompatActivity() {
         val croppedFileName = "$originalFileName-${System.currentTimeMillis()}.jpg"
         val destinationUri = Uri.fromFile(File(cacheDir, croppedFileName))
         val maxWidth = 800
-        val maxHeight = 600
+        val maxHeight = 800
 
         UCrop.of(uri, destinationUri)
-            .withAspectRatio(16F, 9F)
+            .withAspectRatio(1F, 1F)
             .withMaxResultSize(maxWidth, maxHeight)
             .start(this)
     }
@@ -141,13 +141,16 @@ class UploadActivity : AppCompatActivity() {
                 response?.let {
                     AlertDialog.Builder(this).apply {
                         setTitle("Success")
-                        setMessage("Story uploaded successfully.")
-                        setPositiveButton("OK") { _, _ ->
+                        setMessage("Classified successfully.")
+                        setPositiveButton("See result") { _, _ ->
                             val intent = Intent(this@UploadActivity, ResultActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             intent.putExtra(ResultActivity.EXTRA_IMAGE_URI, currentImageUri.toString())
                             intent.putExtra(ResultActivity.EXTRA_MAIN_CATEGORY, response.mainCategory)
                             intent.putExtra(ResultActivity.EXTRA_SUB_CATEGORY, response.subCategory)
+                            intent.putExtra(ResultActivity.EXTRA_DESCRIPTION, response.description)
+                            val nonNullRecommendations = response.recommendations?.filterNotNull() ?: emptyList()
+                            intent.putStringArrayListExtra(ResultActivity.EXTRA_RECOMMENDATIONS, ArrayList(nonNullRecommendations))
                             startActivity(intent)
                         }
                         create()
