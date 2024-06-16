@@ -12,12 +12,12 @@ import androidx.credentials.CredentialManager
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.capstone.trashcan.databinding.ActivityMainBinding
+import com.capstone.trashcan.view.wastebank.WasteBankActivity
 import com.capstone.trashcan.view.welcome.WelcomeActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -41,13 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayUserInfo(user: FirebaseUser) {
-        // Get user's display name
         val displayName = user.displayName
         if (displayName != null) {
             binding.userName.text = displayName
         }
 
-        // Get user's profile photo URL
         val photoUrl: Uri? = user.photoUrl
         if (photoUrl != null) {
             Glide.with(this).load(photoUrl).into(binding.imgItemPhoto)
@@ -63,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 //        binding.signupButton.setOnClickListener {
 //            startActivity(Intent(this, SignupActivity::class.java))
 //        }
+
+        binding.navigateToWasteBankButton.setOnClickListener {
+            startActivity(Intent(this, WasteBankActivity::class.java))
+        }
     }
 
 //    private fun signOut() {

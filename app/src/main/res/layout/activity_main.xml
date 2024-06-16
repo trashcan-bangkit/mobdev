@@ -328,4 +328,15 @@
         android:padding="9dp"
         tools:listitem="@layout/item_wastebank" />
 
+    <Button
+        android:id="@+id/navigate_to_waste_bank_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to WasteBank"
+        app:layout_constraintTop_toBottomOf="@id/waste_banks_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
