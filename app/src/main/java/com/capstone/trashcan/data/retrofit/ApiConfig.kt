@@ -6,6 +6,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
+    private var token: String = ""
+
     fun getApiService(): ApiService {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -18,5 +20,9 @@ object ApiConfig {
             .client(client)
             .build()
         return retrofit.create(ApiService::class.java)
+    }
+
+    fun setToken(token: String){
+        this.token = token
     }
 }
