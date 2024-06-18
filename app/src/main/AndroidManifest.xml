@@ -21,13 +21,29 @@
             android:name=".view.wastebank.WasteBankActivity"
             android:exported="false" />
         <activity
+            android:name=".view.classify.SecondResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.history.HistoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.classify.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.classify.UploadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NavActivity"
+            android:exported="false"
+            android:label="@string/title_activity_nav" />
+        <activity
             android:name=".view.signup.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.main.MainActivity"
             android:exported="true" />
         <activity
             android:name=".view.welcome.WelcomeActivity"
@@ -38,6 +54,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
