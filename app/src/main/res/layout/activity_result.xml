@@ -26,6 +26,15 @@
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/saveHistoryIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_bookmark" />
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -39,6 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:padding="16dp">
+
 
             <!-- Image -->
             <ImageView
@@ -155,7 +165,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/classifyButton"
+                android:id="@+id/homeButton"
                 android:layout_width="300dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="20dp"

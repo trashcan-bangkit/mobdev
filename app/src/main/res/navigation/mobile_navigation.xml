@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.capstone.trashcan.HistoryFragment"
+        android:name="com.capstone.trashcan.view.history.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
 

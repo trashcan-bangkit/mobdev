@@ -45,6 +45,20 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
+            android:id="@+id/tv_sublabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_background_blue"
+            android:padding="8dp"
+            android:text="Plastic Bottle 96%"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
             android:id="@+id/tv_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +66,7 @@
             android:text="2024-03-06, 13:00"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_sublabel"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
