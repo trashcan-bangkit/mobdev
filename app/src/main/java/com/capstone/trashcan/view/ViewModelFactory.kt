@@ -4,29 +4,37 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.trashcan.data.UserRepository
+import com.capstone.trashcan.data.WasteBankRepository
 import com.capstone.trashcan.di.Injection
 import com.capstone.trashcan.view.login.LoginViewModel
 import com.capstone.trashcan.view.main.MainViewModel
 import com.capstone.trashcan.view.profile.ProfileFragment
 import com.capstone.trashcan.view.profile.ProfileViewModel
+import com.capstone.trashcan.view.wastebank.WasteBankViewModel
 
-class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(
+    private val userRepository: UserRepository,
+    private val wasteBankRepository: WasteBankRepository
+) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                MainViewModel(repository) as T
+                MainViewModel(userRepository) as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                LoginViewModel(repository) as T
+                LoginViewModel(userRepository) as T
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
-                ProfileViewModel(repository) as T
+                ProfileViewModel(userRepository) as T
             }
 //            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
 //                MapsViewModel(repository) as T
 //            }
+            modelClass.isAssignableFrom(WasteBankViewModel::class.java) -> {
+                WasteBankViewModel(wasteBankRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -36,12 +44,12 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
         private var INSTANCE: ViewModelFactory? = null
         @JvmStatic
         fun getInstance(context: Context): ViewModelFactory {
-            if (INSTANCE == null) {
-                synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideRepository(context))
-                }
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: ViewModelFactory(
+                    Injection.provideUserRepository(context),
+                    Injection.provideWasteBankRepository(context)
+                ).also { INSTANCE = it }
             }
-            return INSTANCE as ViewModelFactory
         }
     }
 }

@@ -28,7 +28,7 @@
     <string name="location_icon">Location Now</string>
     <string name="your_location">Your Location</string>
     <string name="nearest_waste_bank">Nearest Waste Bank</string>
-    <string name="waste_bank_around">Waste Banks Around You</string>
+    <string name="waste_bank_around">Other Waste Banks Around You</string>
 
     <string name="profile_picture">Profile Picture</string>
     <string name="welcome_back_coma">Welcome back,</string>
@@ -54,6 +54,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="location_not_found">Can\'t find location</string>
+    <string name="kids_banner">kids_banner</string>
 
     <integer-array name="data_photo">
         <item>@drawable/sampah1</item>
