@@ -21,11 +21,11 @@
         android:id="@+id/sliderTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="15dp"
         android:text="@string/screen1"
         android:textAlignment="center"
         android:textColor="@color/green"
-        android:textSize="29sp"
+        android:textSize="26sp"
         android:textStyle="bold" />
 
     <TextView
