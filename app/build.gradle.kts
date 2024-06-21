@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -62,6 +63,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     implementation("androidx.activity:activity-ktx:1.7.2")
+
+    implementation("androidx.room:room-runtime:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

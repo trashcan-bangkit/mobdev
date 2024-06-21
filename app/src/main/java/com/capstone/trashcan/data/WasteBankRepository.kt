@@ -9,10 +9,6 @@ class WasteBankRepository private constructor(
     private val apiService: ApiService
 ) {
 
-    suspend fun getNearbyWasteBanks(location: String): WastebankResponse {
-        return apiService.getNearbyWasteBanks(location)
-    }
-
     suspend fun getNearestWasteBank(location: String): Nearest? {
         val response = apiService.getNearbyWasteBanks(location)
         return response.nearest?.let { nearest ->

@@ -29,9 +29,6 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(userRepository) as T
             }
-//            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-//                MapsViewModel(repository) as T
-//            }
             modelClass.isAssignableFrom(WasteBankViewModel::class.java) -> {
                 WasteBankViewModel(wasteBankRepository) as T
             }

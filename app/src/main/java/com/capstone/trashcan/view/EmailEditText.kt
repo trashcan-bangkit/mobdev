@@ -2,6 +2,7 @@ package com.capstone.trashcan.view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Typeface
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -39,12 +40,14 @@ class EmailEditText @JvmOverloads constructor(
             override fun afterTextChanged(s: Editable) {
             }
         })
+
+        hint = "Masukkan email Anda"
+        typeface = Typeface.DEFAULT
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Masukkan email Anda"
-
+        typeface = Typeface.DEFAULT
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

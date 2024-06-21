@@ -50,7 +50,7 @@
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/signup"
         android:textSize="20sp"
         app:backgroundTint="#8CCA5B"

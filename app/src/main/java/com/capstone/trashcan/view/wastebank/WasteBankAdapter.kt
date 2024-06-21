@@ -35,7 +35,6 @@ class WasteBankAdapter : RecyclerView.Adapter<WasteBankAdapter.ViewHolder>() {
             binding.tvItemName.text = wasteBank.name
             binding.tvItemDistance.text = wasteBank.distance.toString()
             binding.tvItemAddress.text = wasteBank.address
-            // Update image if you have one
         }
     }
 }

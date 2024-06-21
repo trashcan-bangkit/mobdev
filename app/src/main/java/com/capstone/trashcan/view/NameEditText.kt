@@ -2,6 +2,7 @@ package com.capstone.trashcan.view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Typeface
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -14,7 +15,7 @@ class NameEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatEditText(context, attrs) {
     init {
-        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PERSON_NAME
 
         // Add text change listener to validate password length
         addTextChangedListener(object : TextWatcher {
@@ -33,14 +34,14 @@ class NameEditText @JvmOverloads constructor(
                 // Do nothing.
             }
         })
+
+        hint = "Masukkan nama Anda"
+        typeface = Typeface.DEFAULT
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        // Menambahkan hint pada editText
-        hint = "Masukkan nama Anda"
-
-        // Menambahkan text aligmnet pada editText
+        typeface = Typeface.DEFAULT
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

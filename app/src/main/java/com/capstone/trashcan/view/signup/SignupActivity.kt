@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.capstone.trashcan.R
 import com.capstone.trashcan.databinding.ActivitySignupBinding
 
@@ -67,6 +68,10 @@ class SignupActivity : AppCompatActivity() {
         signupViewModel.isLoading.observe(this) {
             showLoading(it)
         }
+
+        Glide.with(this)
+            .load(R.drawable.signup)
+            .into(binding.imageView)
     }
 
     private fun setupView() {

@@ -21,6 +21,9 @@ class WasteBankViewModel(
     private val _otherWasteBanks = MutableLiveData<List<OthersItem?>?>()
     val otherWasteBanks: LiveData<List<OthersItem?>?> get() = _otherWasteBanks
 
+    private val _filteredWasteBanks = MutableLiveData<List<OthersItem?>>()
+    val filteredWasteBanks: LiveData<List<OthersItem?>> get() = _filteredWasteBanks
+
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
@@ -39,6 +42,40 @@ class WasteBankViewModel(
             } catch (e: HttpException) {
                 _errorMessage.value = "An error occurred while fetching waste banks."
             } catch (e: IOException) {
+                _errorMessage.value = "Network error. Please check your internet connection."
+            }
+        }
+    }
+
+    fun fetchNearbyWasteBanks(location: String) {
+        viewModelScope.launch {
+            _loadingState.value = true
+            try {
+                val nearestWasteBank = wasteBankRepository.getNearestWasteBank(location)
+                val otherWasteBanks = wasteBankRepository.getOtherWasteBanks(location)
+
+                val filteredWasteBanks = mutableListOf<OthersItem?>()
+                nearestWasteBank?.let {
+                    filteredWasteBanks.add(
+                        OthersItem(
+                            address = it.address,
+                            name = it.name,
+                            location = it.location,
+                            distance = it.distance
+                        )
+                    )
+                }
+                otherWasteBanks?.let {
+                    filteredWasteBanks.addAll(it.take(2))
+                }
+
+                _filteredWasteBanks.postValue(filteredWasteBanks)
+                _loadingState.value = false
+            } catch (e: HttpException) {
+                _loadingState.value = false
+                _errorMessage.value = "An error occurred while fetching waste banks."
+            } catch (e: IOException) {
+                _loadingState.value = false
                 _errorMessage.value = "Network error. Please check your internet connection."
             }
         }

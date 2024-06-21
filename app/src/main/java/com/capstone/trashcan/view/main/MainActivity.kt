@@ -42,16 +42,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        auth = Firebase.auth
-//        val firebaseUser = auth.currentUser
-//        if (firebaseUser == null) {
-//            // Not signed in, launch the Login activity
-//            startActivity(Intent(this, WelcomeActivity::class.java))
-//            finish()
-//            return
-//        }
-
-//        val navView: BottomAppBar = binding.bottomAppBar
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         val navView: BottomNavigationView = binding.bottomNavigationView
@@ -78,40 +68,26 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setupAction()
+
+        if (intent.getBooleanExtra("navigate_to_history", false)) {
+            navigateToHistoryFragment()
+        }
+
+        if (intent.getBooleanExtra(EXTRA_NAVIGATE_HISTORY, false)) {
+            navController.navigate(R.id.navigation_history)
+        }
+    }
+
+    private fun navigateToHistoryFragment() {
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController.navigate(R.id.navigation_history) // Use the ID from your navigation graph
     }
 
     private fun setupAction() {
-//        binding.logoutButton.setOnClickListener {
-////            startActivity(Intent(this, WelcomeActivity::class.java))
-//            signOut()
-//        }
 
-//        binding.signupButton.setOnClickListener {
-//            startActivity(Intent(this, SignupActivity::class.java))
-//        }
     }
 
-//    private fun signOut() {
-//        viewModel.logout()
-////        lifecycleScope.launch {
-////            val credentialManager = CredentialManager.create(this@MainActivity)
-////            auth.signOut()
-////            credentialManager.clearCredentialState(ClearCredentialStateRequest())
-////            startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
-////            finish()
-////        }
-//
-//    }
-
-//    private fun displayUserInfo(user: FirebaseUser) {
-//        val displayName = user.displayName
-//        if (displayName != null) {
-//            binding.userName.text = displayName
-//        }
-//
-//        val photoUrl: Uri? = user.photoUrl
-//        if (photoUrl != null) {
-//            Glide.with(this).load(photoUrl).into(binding.imgItemPhoto)
-//        }
-//    }
+    companion object {
+        const val EXTRA_NAVIGATE_HISTORY = "extra_navigate_history"
+    }
 }

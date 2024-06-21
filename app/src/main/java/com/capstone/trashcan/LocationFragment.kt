@@ -70,7 +70,6 @@ class LocationFragment : Fragment() {
                 binding.nearestWasteBankName.text = it.name
                 binding.nearestWasteBankDistance.text = it.distance.toString()
                 binding.nearestWasteBankAddress.text = it.address
-                // Update image if you have one
             }
         })
 
@@ -78,7 +77,6 @@ class LocationFragment : Fragment() {
             wasteBankAdapter.submitList(others)
         })
 
-        // Check permissions and get location
         if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
             checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
             getMyLastLocation()
@@ -98,15 +96,12 @@ class LocationFragment : Fragment() {
         ) { permissions ->
             when {
                 permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
-                    // Precise location access granted.
                     getMyLastLocation()
                 }
                 permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                    // Only approximate location access granted.
                     getMyLastLocation()
                 }
                 else -> {
-                    // No location access granted.
                     Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show()
                 }
             }

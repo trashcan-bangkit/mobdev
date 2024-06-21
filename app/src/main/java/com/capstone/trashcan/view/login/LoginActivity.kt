@@ -11,6 +11,8 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.capstone.trashcan.R
 import com.capstone.trashcan.view.main.MainActivity
 import com.capstone.trashcan.databinding.ActivityLoginBinding
 import com.capstone.trashcan.view.ViewModelFactory
@@ -28,6 +30,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        Glide.with(this)
+            .load(R.drawable.login)
+            .into(binding.imageView)
 
         setupView()
         setupAction()
